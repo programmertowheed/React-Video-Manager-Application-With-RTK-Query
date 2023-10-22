@@ -1,6 +1,6 @@
 # React Video Manager Website With RTK Query
 
-Live link: <a href="https://project.programmertowheed.com/video-manager" target="_blank">https://project.programmertowheed.com/video-manager</a>
+Live link: https://project.programmertowheed.com/video-manager
 
 <!-- HOW TO RUN -->
 
