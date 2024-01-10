@@ -1,7 +1,7 @@
 import LikeUnlike from "./LikeUnlike";
 
 export default function VideoDescription({ video }) {
-    const { title, date, description } = video;
+    const { title, created_at, description } = video;
 
     return (
         <div>
@@ -10,7 +10,7 @@ export default function VideoDescription({ video }) {
             </h1>
             <div className="pb-4 flex items-center space-between border-b">
                 <h2 className="text-sm leading-[1.7142857] text-slate-600 w-full">
-                    Uploaded on {date}
+                    Uploaded on {created_at} ago
                 </h2>
 
                 <LikeUnlike />

@@ -6,7 +6,7 @@ import Video from "./pages/Video";
 
 function App() {
     return (
-        <Router>
+        <Router basename={"/video-manager"}>
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />

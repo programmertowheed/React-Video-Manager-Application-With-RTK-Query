@@ -12,7 +12,7 @@ const initialState = {
 // async thunk
 export const fetchVideo = createAsyncThunk("video/fetchVideo", async (id) => {
     const video = await getVideo(id);
-    return video;
+    return video.data;
 });
 
 // async thunk

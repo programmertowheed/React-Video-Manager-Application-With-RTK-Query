@@ -18,10 +18,10 @@ export default function Tags() {
 
     return tags?.length > 0 ? (
         <section>
-            <div className="flex justify-between max-w-7xl mx-auto px-5 py-6 lg:px-0 gap-2 border-b overflow-y-auto">
+            <div className="flex justify-between mx-auto px-5 py-4 mx-2 lg:px-0 border-b overflow-y-auto">
                 <div className="flex">
                     {tags.map((tag) => (
-                        <Tag key={tag.id} title={tag.title} />
+                        <Tag key={tag.id} id={tag.id} title={tag.name} />
                     ))}
                 </div>
                 <button

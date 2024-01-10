@@ -1,19 +1,15 @@
 import axios from "../../utils/axios";
 
-export const getVideos = async (tags, search, author) => {
+export const getVideos = async (tag, search, author) => {
     let queryString = "";
 
-    if (tags?.length > 0) {
-        queryString += tags.map((tag) => `tags_like=${tag}`).join("&");
+    if (tag !== undefined) {
+        queryString += `tag=${tag}`;
     }
 
     if (author !== "") {
-        const authorText = author.split(" ");
-        let authorQuery =
-            authorText?.length > 0
-                ? authorText?.map((text) => `author_like=${text}`).join("&")
-                : "";
-        if (tags?.length > 0) {
+        let authorQuery = `author=${author}`;
+        if (tag !== undefined) {
             queryString = queryString + "&" + authorQuery;
         } else {
             queryString = queryString + authorQuery;
@@ -21,7 +17,11 @@ export const getVideos = async (tags, search, author) => {
     }
 
     if (search !== "") {
-        queryString += `&q=${search}`;
+        if (tag !== undefined || author !== "") {
+            queryString += `&q=${search}`;
+        } else {
+            queryString += `q=${search}`;
+        }
     }
 
     // if (queryString !== "") {
@@ -30,7 +30,7 @@ export const getVideos = async (tags, search, author) => {
     //     queryString += `_page=${currentPage}&_limit=${limit}`;
     // }
 
-    const response = await axios.get(`/yt_videos/?${queryString}`);
+    const response = await axios.get(`/videos?${queryString}`);
 
     return response.data;
 };

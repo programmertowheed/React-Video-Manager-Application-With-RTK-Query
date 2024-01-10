@@ -1,12 +1,12 @@
 const { createSlice } = require("@reduxjs/toolkit");
 
 const START = 0;
-const END = 4;
-const PERPAGE = 4;
+const END = 8;
+const PERPAGE = 8;
 const CPAGE = 1;
 
 const initialState = {
-    tags: [],
+    tag: undefined,
     search: "",
     author: "",
     start: START,
@@ -20,20 +20,16 @@ const filterSlice = createSlice({
     initialState,
     reducers: {
         tagSelected: (state, action) => {
-            state.tags.push(action.payload);
+            state.tag = action.payload;
         },
-        tagRemoved: (state, action) => {
-            const indexToRemove = state.tags.indexOf(action.payload);
-
-            if (indexToRemove !== -1) {
-                state.tags.splice(indexToRemove, 1);
-            }
+        tagRemoved: (state) => {
+            state.tag = undefined;
         },
         searched: (state, action) => {
             state.search = action.payload;
         },
         authorFiltered: (state, action) => {
-            state.tags = [];
+            state.tag = undefined;
             state.search = "";
             state.author = action.payload;
         },
@@ -52,7 +48,7 @@ const filterSlice = createSlice({
             state.cPage = CPAGE;
         },
         cleared: (state, action) => {
-            state.tags = [];
+            state.tag = undefined;
             state.search = "";
             state.author = "";
             state.start = START;
